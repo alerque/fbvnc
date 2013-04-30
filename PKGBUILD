@@ -1,6 +1,5 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 pkgname=fbvnc-git
-_gitname=fbvnc
 pkgver=0.0.0
 pkgrel=1
 epoch=
@@ -20,23 +19,29 @@ backup=()
 options=()
 install=
 changelog=
-source=('git+https://github.com/alerque/fbvnc.git')
+source=()
 noextract=()
-md5sums=('fb32a72110c7f1dd006fbca9828dc5da')
+md5sums=('')
 
-pkgver() {
-  cd $_gitname
-  git describe --always | sed 's|-|.|g'
-}
+_gitname=fbvnc
+_gitroot=git://github.com/alerque/fbvnc.git
 
 build() {
-  cd $_gitname
+  cd "$srcdir"
+  if [[ -d "$_gitname" ]]; then
+    cd "$_gitname" && git pull origin
+  else
+    git clone "$_gitroot" "$_gitname"
+  fi
+  rm -rf "$srcdir/$_gitname-build"
+  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname-build"
+
   make
 }
 
-
 package() {
-  cd $_gitname
+  cd "$srcdir/$_gitname-build"
   make DESTDIR="$pkgdir/" install
 }
 
