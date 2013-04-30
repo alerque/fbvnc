@@ -20,7 +20,7 @@ backup=()
 options=()
 install=
 changelog=
-source=('git://github.com/alerque/fbvnc.git')
+source=('git+https://github.com/alerque/fbvnc.git')
 noextract=()
 md5sums=('fb32a72110c7f1dd006fbca9828dc5da')
 
