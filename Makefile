@@ -11,6 +11,6 @@ all: fbvnc
 fbvnc: fbvnc.o draw.o d3des.o vncauth.o
 	$(CC) $(LDFLAGS) -o $@ $^
 install:
-	install -Dm755 fbvnc "$(DESTDIR)$(BINDIR)"
+	install -Dm755 fbvnc "$(DESTDIR)$(BINDIR)/fbvnc"
 clean:
 	rm -f *.o fbvnc
