@@ -10,7 +10,7 @@ url="https://github.com/alerque/fbvnc"
 license=()
 groups=()
 depends=()
-makedepends=()
+makedepends=('git')
 checkdepends=()
 optdepends=()
 provides=('fbvnc')
@@ -20,7 +20,7 @@ backup=()
 options=()
 install=
 changelog=
-source=('git+git://github.com/alerque/fbvnc.git')
+source=('git://github.com/alerque/fbvnc.git')
 noextract=()
 md5sums=('fb32a72110c7f1dd006fbca9828dc5da')
 
